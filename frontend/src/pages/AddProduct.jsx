@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
+import { API } from "../api";
 
 const AddProduct = () => {
   const [name, setName] = useState("");
@@ -14,12 +15,8 @@ const AddProduct = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/categories")
-      .then((r) => setCategories(r.data));
-    axios
-      .get("http://localhost:5000/subcategories")
-      .then((r) => setSubcategories(r.data));
+    axios.get(`${API}/categories`).then((r) => setCategories(r.data));
+    axios.get(`${API}/subcategories`).then((r) => setSubcategories(r.data));
   }, []);
 
   const handleSave = async () => {
@@ -28,7 +25,7 @@ const AddProduct = () => {
       (s) => s.id === Number(subcategoryId)
     );
 
-    await axios.post("http://localhost:5000/products", {
+    await axios.post(`${API}/products`, {
       name,
       price,
       status,

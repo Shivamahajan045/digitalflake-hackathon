@@ -20,7 +20,7 @@ const AddSubcategory = () => {
   const handleSave = async () => {
     const category = categories.find((c) => c.id === Number(categoryId));
 
-    await axios.post("http://localhost:5000/subcategories", {
+    await axios.post(`${API}/subcategories`, {
       name,
       categoryId,
       categoryName: category.name,

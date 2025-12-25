@@ -53,7 +53,7 @@ const EditProduct = () => {
       (s) => s.id === Number(subcategoryId)
     );
 
-    await axios.put(`http://localhost:5000/products/${id}`, {
+    await axios.put(`${API}/products/${id}`, {
       name,
       price,
       status,

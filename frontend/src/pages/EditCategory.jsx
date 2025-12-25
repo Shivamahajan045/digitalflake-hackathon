@@ -48,7 +48,7 @@ const EditCategory = () => {
       return;
     }
 
-    await axios.put(`http://localhost:5000/categories/${id}`, {
+    await axios.put(`${API}/categories/${id}`, {
       name,
       image,
       status,

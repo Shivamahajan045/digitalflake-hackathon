@@ -20,7 +20,7 @@ const Product = () => {
   };
 
   const handleDelete = async () => {
-    await axios.delete(`http://localhost:5000/products/${deleteId}`);
+    await axios.delete(`${API}/products/${deleteId}`);
     setDeleteId(null);
     fetchProducts();
   };

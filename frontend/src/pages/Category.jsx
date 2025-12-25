@@ -21,7 +21,7 @@ const Category = () => {
   };
 
   const handleDelete = async () => {
-    await axios.delete(`http://localhost:5000/categories/${deleteId}`);
+    await axios.delete(`${API}/categories/${deleteId}`);
     setDeleteId(null);
     fetchCategories();
   };

@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
+import { API } from "../api.js";
 
 const AddCategory = () => {
   const [name, setName] = useState("");
@@ -26,7 +27,7 @@ const AddCategory = () => {
       return;
     }
 
-    await axios.post("http://localhost:5000/categories", {
+    await axios.post(`${API}/categories`, {
       name,
       image,
       status,
