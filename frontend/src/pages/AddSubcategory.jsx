@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
+import { API } from "../api";
 
 const AddSubcategory = () => {
   const [name, setName] = useState("");
@@ -11,7 +12,7 @@ const AddSubcategory = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/categories").then((res) => {
+    axios.get(`${API}/categories`).then((res) => {
       setCategories(res.data);
     });
   }, []);

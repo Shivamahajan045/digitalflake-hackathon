@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import DeleteModal from "../components/DeleteModal";
+import { API } from "../api";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -14,7 +15,7 @@ const Product = () => {
   }, []);
 
   const fetchProducts = async () => {
-    const res = await axios.get("http://localhost:5000/products");
+    const res = await axios.get(`${API}/products`);
     setProducts(res.data);
   };
 

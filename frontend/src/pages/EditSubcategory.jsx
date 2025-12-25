@@ -11,14 +11,15 @@ const EditSubcategory = () => {
   const [status, setStatus] = useState("Active");
   const [categories, setCategories] = useState([]);
   const [categoryId, setCategoryId] = useState("");
+  import { API } from "../api";
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const subs = await axios.get("http://localhost:5000/subcategories");
-    const cats = await axios.get("http://localhost:5000/categories");
+    const subs = await axios.get(`${API}/subcategories`);
+    const cats = await axios.get(`${API}/categories`);
 
     const sub = subs.data.find((s) => s.id === Number(id));
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Layout from "../components/Layout";
+import { API } from "../api";
 
 const EditCategory = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const EditCategory = () => {
   }, []);
 
   const fetchCategory = async () => {
-    const res = await axios.get("http://localhost:5000/categories");
+    const res = await axios.get(`${API}/categories`);
     const category = res.data.find((c) => c.id === Number(id));
 
     if (!category) {

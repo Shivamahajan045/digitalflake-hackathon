@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import DeleteModal from "../components/DeleteModal";
+import { API } from "../api";
 
 const Subcategory = () => {
   const [subcategories, setSubcategories] = useState([]);
@@ -14,12 +15,12 @@ const Subcategory = () => {
   }, []);
 
   const fetchSubcategories = async () => {
-    const res = await axios.get("http://localhost:5000/subcategories");
+    const res = await axios.get(`${API}/subcategories`);
     setSubcategories(res.data);
   };
 
   const handleDelete = async () => {
-    await axios.delete(`http://localhost:5000/subcategories/${deleteId}`);
+    await axios.delete(`${API}/subcategories/${deleteId}`);
     setDeleteId(null);
     fetchSubcategories();
   };

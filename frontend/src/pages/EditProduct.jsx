@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Layout from "../components/Layout";
+import { API } from "../api";
 
 const EditProduct = () => {
   const { id } = useParams();
@@ -23,9 +24,9 @@ const EditProduct = () => {
 
   const fetchData = async () => {
     const [productsRes, categoriesRes, subcategoriesRes] = await Promise.all([
-      axios.get("http://localhost:5000/products"),
-      axios.get("http://localhost:5000/categories"),
-      axios.get("http://localhost:5000/subcategories"),
+      axios.get(`${API}/products`),
+      axios.get(`${API}/categories`),
+      axios.get(`${API}/subcategories`),
     ]);
 
     const product = productsRes.data.find((p) => p.id === Number(id));

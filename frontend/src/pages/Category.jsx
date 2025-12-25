@@ -3,6 +3,7 @@ import axios from "axios";
 import Layout from "../components/Layout";
 import DeleteModal from "../components/DeleteModal";
 import { useNavigate } from "react-router-dom";
+import { API } from "../api";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
@@ -15,7 +16,7 @@ const Category = () => {
   }, []);
 
   const fetchCategories = async () => {
-    const res = await axios.get("http://localhost:5000/categories");
+    const res = await axios.get(`${API}/categories`);
     setCategories(res.data);
   };
 
