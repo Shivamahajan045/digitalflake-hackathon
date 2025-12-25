@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Layout from "../components/Layout";
+import { API } from "../api";
 
 const EditSubcategory = () => {
   const { id } = useParams();
@@ -11,7 +12,6 @@ const EditSubcategory = () => {
   const [status, setStatus] = useState("Active");
   const [categories, setCategories] = useState([]);
   const [categoryId, setCategoryId] = useState("");
-  import { API } from "../api";
 
   useEffect(() => {
     fetchData();
@@ -32,7 +32,7 @@ const EditSubcategory = () => {
   const handleUpdate = async () => {
     const category = categories.find((c) => c.id === Number(categoryId));
 
-    await axios.put(`http://localhost:5000/subcategories/${id}`, {
+    await axios.put(`${API}/subcategories/${id}`, {
       name,
       categoryId,
       categoryName: category.name,
